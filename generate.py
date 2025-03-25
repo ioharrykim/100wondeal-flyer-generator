@@ -15,11 +15,11 @@ include_original_price = input("원가를 넣으시겠습니까? (y/n): ").lower
 include_current_price = input("실판매가를 넣으시겠습니까? (y/n): ").lower() == "y"
 
 # ===== 1. 데이터 로드 및 전처리 =====
-EXCEL_PATH = "data/100wondeal.xlsx"
+CSV_PATH = "data/100wondeal.csv"
 TEMPLATE_DIR = "templates"
 OUTPUT_DIR = "output_html"
 
-df = pd.read_excel(EXCEL_PATH)
+df = pd.read_csv(CSV_PATH)
 
 # 컬럼명 매핑 (ERP 기반 구조)
 df = df.rename(columns={
