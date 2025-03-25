@@ -1,0 +1,5 @@
+.DS_Store
+output_html/
+output_image/
+*.html
+*.png
