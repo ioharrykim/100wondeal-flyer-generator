@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>테스트 마트</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard Variable', sans-serif;
+            background-color: white;
+            color: #fff;
+            letter-spacing: -0.4px;
+        }
+
+        .product-area-wrapper {
+            background-color: #ff4800;
+            padding: 32px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ff4800;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            height: 200px;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: #fff;
+            color: #ff4800;
+            font-weight: 700;
+            font-size: 40px;
+            padding: 6px 40px;
+            border-radius: 20px;
+            text-align: center;
+            /* ✅ 가운데 정렬 */
+            white-space: nowrap;
+            /* ✅ 한 줄로 유지 */
+        }
+
+        .qr-box {
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 8px 20px;
+            text-align: left;
+            color: #ff4800;
+            font-weight: 600;
+            font-size: 60px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .qr-box .qr {
+            height: 150px;
+            width: 150px;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .qr {
+            height: 150px;
+            margin-top: 4px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            padding-top: 30px;
+        }
+
+        .product-grid.columns-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .product-grid.columns-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .product-grid.columns-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .product-grid.columns-5 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 40px;
+            padding: 4px;
+            color: #000;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            max-height: 170px;
+            object-fit: contain;
+            margin-bottom: 6px;
+            margin-top: 6px;
+        }
+
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 30px;
+        }
+
+        .product-standard {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 2px;
+        }
+
+        .product-original {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 26px;
+        }
+
+        .product-price {
+            color: #ff4800;
+            font-size: 60px;
+            font-weight: 700;
+        }
+
+        #save-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #fff;
+            color: #ff4800;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        #save-btn.render-hidden {
+            display: none !important;
+        }
+
+
+        @media print {
+            #save-btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="downloadHTML()" id="save-btn">저장하기</button>
+
+    <div class="product-area-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <img src="../assets/qmarket-logo-white.png" alt="큐마켓 로고" class="header-logo">
+            </div>
+            <div class="header-right">
+                <div class="badge-container">
+                    <div class="badge" contenteditable="true">100원딜</div>
+                    <div class="badge" contenteditable="true">당일 배달</div>
+                    <div class="badge" contenteditable="true">할인 쿠폰</div>
+                </div>
+                <div class="qr-box">
+                    <div class="qr-text" contenteditable="true">QR코드<br>찍고 설치</div>
+                    <img src="../assets/qmarket-qr.svg" alt="QR코드" class="qr">
+                </div>
+            </div>
+        </div>
+
+        <div class="product-grid columns-2">
+            
+            <div class="product-card">
+                
+                <img src="https://images.unsplash.com/photo-1596910547037-846b1980329f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">맛있는 감자</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    100g
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">9,900원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">100원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://images.unsplash.com/photo-1617130094141-532436117aa1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">맛있는 고구마</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    100g
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">8,800원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">100원!</div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        function downloadHTML() {
+            const content = document.documentElement.outerHTML;
+            const blob = new Blob([content], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = (document.title || "전단") + ".html";
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+
+</html>
