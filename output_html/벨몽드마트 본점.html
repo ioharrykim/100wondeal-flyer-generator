@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>벨몽드마트 본점</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard Variable', sans-serif;
+            background-color: white;
+            color: #fff;
+            letter-spacing: -0.4px;
+        }
+
+        .product-area-wrapper {
+            background-color: #ff4800;
+            padding: 32px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ff4800;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            height: 200px;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: #fff;
+            color: #ff4800;
+            font-weight: 700;
+            font-size: 40px;
+            padding: 6px 40px;
+            border-radius: 20px;
+            text-align: center;
+            /* ✅ 가운데 정렬 */
+            white-space: nowrap;
+            /* ✅ 한 줄로 유지 */
+        }
+
+        .qr-box {
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 8px 20px;
+            text-align: left;
+            color: #ff4800;
+            font-weight: 600;
+            font-size: 60px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .qr-box .qr {
+            height: 150px;
+            width: 150px;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .qr {
+            height: 150px;
+            margin-top: 4px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            padding-top: 30px;
+        }
+
+        .product-grid.columns-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .product-grid.columns-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .product-grid.columns-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .product-grid.columns-5 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 40px;
+            padding: 4px;
+            color: #000;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            max-height: 170px;
+            object-fit: contain;
+            margin-bottom: 6px;
+            margin-top: 6px;
+        }
+
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 30px;
+        }
+
+        .product-standard {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 2px;
+        }
+
+        .product-original {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 26px;
+        }
+
+        .product-price {
+            color: #ff4800;
+            font-size: 60px;
+            font-weight: 700;
+        }
+
+        #save-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #fff;
+            color: #ff4800;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        #save-btn.render-hidden {
+            display: none !important;
+        }
+
+
+        @media print {
+            #save-btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="downloadHTML()" id="save-btn">저장하기</button>
+
+    <div class="product-area-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <img src="../assets/qmarket-logo-white.png" alt="큐마켓 로고" class="header-logo">
+            </div>
+            <div class="header-right">
+                <div class="badge-container">
+                    <div class="badge" contenteditable="true">100원딜</div>
+                    <div class="badge" contenteditable="true">당일 배달</div>
+                    <div class="badge" contenteditable="true">할인 쿠폰</div>
+                </div>
+                <div class="qr-box">
+                    <div class="qr-text" contenteditable="true">QR코드<br>찍고 설치</div>
+                    <img src="../assets/qmarket-qr.svg" alt="QR코드" class="qr">
+                </div>
+            </div>
+        </div>
+
+        <div class="product-grid columns-5">
+            
+            <div class="product-card">
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/aswemake.qmarket.com/products/barcode/8801037029338" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">맥심)모카믹스180T+20T</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    2160
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">27,900원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">15,900원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://d2rrvvl2hhzoww.cloudfront.net/upload/402/15902ef9-8ccc-4d2d-8b93-87ce958bc756_%EC%82%BC%EB%B0%B1%EC%8C%80%2010%ED%82%A4%EB%A1%9C.jpg" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">(24)상주삼백쌀10Kg</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    10Kg
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">25,900원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">13,900원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/aswemake.qmarket.com/products/%EB%9F%AD%ED%82%A4%ED%95%A0%EC%9D%B8%EB%A7%88%ED%8A%B8%20%EA%B0%95%EB%82%A8%EC%A0%90/8809195399928.jpg" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">종이컵1박스</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    1박스
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">15,800원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">900원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/stage.aswemake.qmarket.com/upload/%EC%96%91%EB%85%90%EB%8B%AD%EA%B0%88%EB%B9%84.jpeg" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">소양강 맑은 양념 닭갈비</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    800G
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">14,990원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">100원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/stage.aswemake.qmarket.com/upload/art_16922624164803.jpg" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">고성해풍오대미 4KG</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    4kg
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">13,990원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">1,990원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/stage.aswemake.qmarket.com/upload/8+%EA%B3%84%EB%9E%8030%EA%B5%AC+2.png" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">횡성특란 30구 * 2판</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    30구 * 2판
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">13,980원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">1,980원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/aswemake.qmarket.com/products/%EB%9F%AD%ED%82%A4%EB%A7%88%ED%8A%B8%20%EA%B2%80%EC%95%94%EC%A0%90/8801007803180.jpg" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">햇반200g*12입</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    200*12
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">12,990원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">100원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/stage.aswemake.qmarket.com/upload/%ED%81%90%EB%A7%88%EC%BC%93_%EC%82%BC%EA%B2%B9%EC%82%B4.png" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">국내산 냉장 돼지 삼겹살</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    500G
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">12,000원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">100원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/aswemake.qmarket.com/products/fresh/2001174.jpg" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">국내산 돼지 목살</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    600G
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">12,000원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">100원!</div>
+                
+            </div>
+            
+            <div class="product-card">
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/aswemake.qmarket.com/products/barcode/8801052431499" alt="상품 이미지">
+                
+
+                
+                <div class="product-name" contenteditable="true">마시는홍초(석류)900m</div>
+                
+
+                
+                <div class="product-standard" contenteditable="true">
+                    900ml
+                </div>
+                
+
+                
+                <div class="product-original" contenteditable="true">11,990원
+                </div>
+                
+
+                
+                <div class="product-price" contenteditable="true">100원!</div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        function downloadHTML() {
+            const content = document.documentElement.outerHTML;
+            const blob = new Blob([content], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = (document.title || "전단") + ".html";
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+
+</html>
