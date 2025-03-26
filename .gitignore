@@ -1,5 +1,17 @@
+# macOS 불필요 파일
 .DS_Store
-output_html/
-output_image/
+
+# 환경설정 / 민감정보
+.env
+.env.*
+
+# 생성된 결과물 (버전 관리 대상 아님)
 *.html
 *.png
+output_html/
+output_image/
+output_qr/
+
+# 가상환경 (선택)
+venv/
+__pycache__/
